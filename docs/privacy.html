@@ -1,76 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>隐私政策 - 事件倒计时提醒</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件倒计时提醒 - 隐私政策</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            line-height: 1.6;
-            color: #333;
+            background-color: #f9f9f9;
         }
-        .language-select {
-            text-align: right;
-            margin-bottom: 20px;
-        }
-        .language-select a {
-            margin-left: 10px;
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        h1, h2 {
-            color: #4CAF50;
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         h1 {
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
+            color: #2196F3;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #1976D2;
+            margin-top: 25px;
+        }
+        p {
+            margin: 15px 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .last-updated {
+            font-style: italic;
+            color: #666;
+            text-align: right;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="language-select">
-        <a href="index.html">首页</a>
-        <a href="privacy_en.html">English</a>
+    <div class="container">
+        <h1>事件倒计时提醒 - 隐私政策</h1>
+        
+        <p>感谢您使用事件倒计时提醒扩展。本隐私政策旨在说明我们如何收集、使用和保护您的个人信息。</p>
+
+        <h2>信息收集</h2>
+        <p>我们只收集以下必要信息：</p>
+        <ul>
+            <li>您创建的事件数据（事件名称和日期）</li>
+            <li>基本的使用统计信息</li>
+        </ul>
+
+        <h2>信息存储</h2>
+        <p>所有数据都存储在您的本地浏览器中，我们不会将任何数据上传到服务器。具体包括：</p>
+        <ul>
+            <li>事件数据存储在浏览器的本地存储中</li>
+            <li>不会收集或存储任何个人身份信息</li>
+        </ul>
+
+        <h2>信息使用</h2>
+        <p>收集的信息仅用于：</p>
+        <ul>
+            <li>显示事件倒计时</li>
+            <li>发送提醒通知</li>
+            <li>改进扩展功能</li>
+        </ul>
+
+        <h2>第三方服务</h2>
+        <p>本扩展不使用任何第三方服务，也不会与第三方共享您的信息。</p>
+
+        <h2>数据安全</h2>
+        <p>我们采取适当的安全措施来保护您的数据：</p>
+        <ul>
+            <li>所有数据仅保存在本地</li>
+            <li>不进行网络传输</li>
+            <li>遵循浏览器扩展的安全最佳实践</li>
+        </ul>
+
+        <h2>您的权利</h2>
+        <p>您可以随时：</p>
+        <ul>
+            <li>查看、修改或删除您的事件数据</li>
+            <li>卸载扩展，这将删除所有本地存储的数据</li>
+        </ul>
+
+        <h2>政策更新</h2>
+        <p>我们可能会不时更新本隐私政策。重大变更时，我们会通过扩展更新通知您。</p>
+
+        <h2>联系我们</h2>
+        <p>如果您对本隐私政策有任何疑问，请通过以下方式联系我们：</p>
+        <ul>
+            <li>GitHub Issues: <a href="https://github.com/gitLopp/countdown-reminder/issues">https://github.com/gitLopp/countdown-reminder/issues</a></li>
+        </ul>
+
+        <div class="last-updated">
+            最后更新时间：2024年3月12日
+        </div>
+
+        <div class="footer">
+            <p>© 2024 事件倒计时提醒. 保留所有权利。</p>
+        </div>
     </div>
-    <h1>隐私政策</h1>
-    <p>最后更新日期：2024年3月</p>
-
-    <h2>数据收集和使用</h2>
-    <p>事件倒计时提醒扩展重视您的隐私。我们仅在本地存储以下信息：</p>
-    <ul>
-        <li>您创建的事件名称</li>
-        <li>事件日期</li>
-        <li>事件ID（用于内部管理）</li>
-    </ul>
-
-    <h2>数据存储</h2>
-    <p>所有数据仅存储在您的浏览器本地存储中，不会上传到任何服务器或与第三方共享。您可以随时通过浏览器的扩展管理界面清除这些数据。</p>
-
-    <h2>权限使用说明</h2>
-    <p>本扩展使用以下权限：</p>
-    <ul>
-        <li><strong>storage</strong> - 用于在本地保存您的事件数据</li>
-        <li><strong>alarms</strong> - 用于定期检查事件并更新倒计时</li>
-        <li><strong>notifications</strong> - 用于在事件即将到来时发送提醒</li>
-        <li><strong>action</strong> - 用于显示扩展图标和徽章</li>
-    </ul>
-
-    <h2>数据删除</h2>
-    <p>您可以通过以下方式删除数据：</p>
-    <ul>
-        <li>在扩展界面中删除单个事件</li>
-        <li>在浏览器的扩展管理页面中清除扩展数据</li>
-        <li>卸载扩展将完全删除所有相关数据</li>
-    </ul>
-
-    <h2>更新</h2>
-    <p>我们可能会不时更新此隐私政策。任何重大变更都会通过扩展更新时通知您。</p>
-
-    <h2>联系我们</h2>
-    <p>如果您对此隐私政策有任何疑问，请通过以下方式联系我们：</p>
-    <p>[您的联系方式]</p>
 </body>
 </html> 
