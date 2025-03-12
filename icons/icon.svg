@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆形 -->
+  <circle cx="64" cy="64" r="48" fill="white" stroke="#4CAF50" stroke-width="6"/>
+  
+  <!-- 闹钟顶部的铃铛 -->
+  <path d="M64 16 L64 28" stroke="#4CAF50" stroke-width="6" stroke-linecap="round"/>
+  <path d="M44 20 L38 32" stroke="#4CAF50" stroke-width="6" stroke-linecap="round"/>
+  <path d="M84 20 L90 32" stroke="#4CAF50" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- 时针和分针 -->
+  <line x1="64" y1="64" x2="64" y2="40" stroke="#4CAF50" stroke-width="6" stroke-linecap="round"/>
+  <line x1="64" y1="64" x2="82" y2="64" stroke="#4CAF50" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- 时间刻度 -->
+  <line x1="64" y1="28" x2="64" y2="36" stroke="#4CAF50" stroke-width="4" stroke-linecap="round"/>
+  <line x1="96" y1="64" x2="88" y2="64" stroke="#4CAF50" stroke-width="4" stroke-linecap="round"/>
+  <line x1="64" y1="100" x2="64" y2="92" stroke="#4CAF50" stroke-width="4" stroke-linecap="round"/>
+  <line x1="32" y1="64" x2="40" y2="64" stroke="#4CAF50" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- 中心点 -->
+  <circle cx="64" cy="64" r="3" fill="#4CAF50"/>
+  
+  <!-- 沙漏图标 -->
+  <path d="M40 28 H88 L64 64 L88 100 H40 L64 64 Z" 
+        fill="white" stroke="#4CAF50" stroke-width="8" stroke-linejoin="round"/>
+</svg> 

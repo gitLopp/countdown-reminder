@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "事件倒计时提醒",
+  "short_name": "事件倒计时提醒",
+  "version": "1.0",
+  "description": "显示最近事件的倒计时天数，帮助您追踪重要事件的时间。支持添加、删除事件，并提供倒计时提醒功能。",
+  "author": "Your Name",
+  "default_locale": "zh_CN",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "action"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icons/icon128.png",
+      "48": "icons/icon48.png",
+      "32": "icons/icon32.png",
+      "16": "icons/icon16.png"
+    },
+    "default_title": "事件倒计时提醒"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "icons": {
+    "128": "icons/icon128.png",
+    "48": "icons/icon48.png",
+    "32": "icons/icon32.png",
+    "16": "icons/icon16.png"
+  },
+  "minimum_edge_version": "79.0.309.0"
+} 

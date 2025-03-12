@@ -1,0 +1,47 @@
+[简体中文]
+事件倒计时提醒
+
+简单实用的浏览器扩展，帮助您追踪重要事件的倒计时。无需复杂设置，轻松管理您的重要日程。
+
+主要功能：
+• 添加和管理多个重要事件
+• 实时显示倒计时天数
+• 浏览器图标上直观显示最近事件的剩余天数
+• 事件即将到来时发送通知提醒
+• 简洁美观的界面设计
+• 支持中英文界面
+
+使用方法：
+1. 点击浏览器工具栏中的扩展图标
+2. 点击"添加新事件"按钮
+3. 输入事件名称和日期
+4. 点击确定保存事件
+
+隐私保护：
+• 所有数据仅保存在本地
+• 不会上传任何信息到服务器
+• 无需注册账号
+
+[English]
+Event Countdown Reminder
+
+A simple and practical browser extension that helps you track countdown to important events. Easily manage your important schedules without complex setup.
+
+Key Features:
+• Add and manage multiple important events
+• Real-time countdown display
+• Visual badge showing days left for the nearest event
+• Notification reminders for upcoming events
+• Clean and beautiful interface design
+• Supports both English and Chinese interfaces
+
+How to Use:
+1. Click the extension icon in the browser toolbar
+2. Click "Add New Event" button
+3. Enter event name and date
+4. Click confirm to save the event
+
+Privacy Protection:
+• All data is stored locally
+• No information is uploaded to servers
+• No account registration required 

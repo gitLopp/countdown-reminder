@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert SVG to PNG</title>
+</head>
+<body>
+    <canvas id="canvas16" width="16" height="16"></canvas>
+    <canvas id="canvas32" width="32" height="32"></canvas>
+    <canvas id="canvas48" width="48" height="48"></canvas>
+    <canvas id="canvas128" width="128" height="128"></canvas>
+
+    <script>
+        const svgData = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- 渐变背景 -->
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#E8F5E9"/>
+      <stop offset="60%" style="stop-color:#C8E6C9"/>
+      <stop offset="100%" style="stop-color:#A5D6A7"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- 背景圆形 -->
+  <circle cx="64" cy="64" r="64" fill="url(#bgGradient)"/>
+  
+  <!-- 沙漏外框 -->
+  <path d="M36 24 
+           C36 24 92 24 92 24
+           S72 64 72 64
+           S92 104 92 104
+           S36 104 36 104
+           S56 64 56 64Z" 
+        fill="white" 
+        stroke="#43A047" 
+        stroke-width="8" 
+        stroke-linejoin="round"/>
+  
+  <!-- 上部装饰线 -->
+  <path d="M24 24 L104 24" stroke="#66BB6A" stroke-width="8" stroke-linecap="round"/>
+  <path d="M24 25 L104 25" stroke="#43A047" stroke-width="6" stroke-linecap="round"/>
+  <path d="M24 26 L104 26" stroke="#2E7D32" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- 下部装饰线 -->
+  <path d="M24 104 L104 104" stroke="#66BB6A" stroke-width="8" stroke-linecap="round"/>
+  <path d="M24 105 L104 105" stroke="#43A047" stroke-width="6" stroke-linecap="round"/>
+  <path d="M24 106 L104 106" stroke="#2E7D32" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- 上部沙子 -->
+  <path d="M52 36 L76 36 L64 48 Z" 
+        fill="#66BB6A"/>
+  
+  <!-- 下部沙子 -->
+  <path d="M48 84 
+           L80 84 
+           L88 88
+           L64 96
+           L40 88 Z" 
+        fill="#43A047"/>
+  
+  <!-- 沙子流动效果 -->
+  <line x1="64" y1="52" x2="64" y2="76" 
+        stroke="#66BB6A" 
+        stroke-width="3" 
+        stroke-linecap="round"/>
+</svg>`;
+
+        const sizes = [16, 32, 48, 128];
+        
+        sizes.forEach(size => {
+            const canvas = document.getElementById(`canvas${size}`);
+            const ctx = canvas.getContext('2d');
+            
+            const blob = new Blob([svgData], {type: 'image/svg+xml'});
+            const url = URL.createObjectURL(blob);
+            const img = new Image();
+            
+            img.onload = () => {
+                ctx.drawImage(img, 0, 0, size, size);
+                
+                // 下载PNG
+                const link = document.createElement('a');
+                link.download = `icon${size}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            };
+            
+            img.src = url;
+        });
+    </script>
+</body>
+</html> 

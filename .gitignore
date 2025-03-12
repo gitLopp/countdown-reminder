@@ -1,0 +1,23 @@
+# Chrome Extension specific
+*.crx
+*.pem
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Node.js (if you use it in the future)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Build output (if you have any)
+dist/
+build/ 
