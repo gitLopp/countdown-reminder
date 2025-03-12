@@ -39,54 +39,78 @@ const badgeManager = {
 
 // 事件检查
 async function checkEvents() {
-    const result = await chrome.storage.local.get(['events']);
-    const events = result.events || [];
-    const now = new Date();
-    
-    // 过滤并排序未来事件
-    const futureEvents = events
-        .filter(event => new Date(event.date) > now)
-        .sort((a, b) => new Date(a.date) - new Date(b.date));
-    
-    // 更新徽章
-    if (futureEvents.length > 0) {
-        const nextEvent = futureEvents[0];
-        const days = dateUtils.calculateDays(nextEvent.date);
-        badgeManager.update(days);
+    try {
+        const result = await chrome.storage.local.get(['events']);
+        const events = result.events || [];
+        const now = new Date();
         
-        // 检查是否需要发送通知（1天内）
-        const timeLeft = new Date(nextEvent.date) - now;
-        if (timeLeft > 0 && timeLeft <= 24 * 60 * 60 * 1000) {
-            const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-            notificationManager.create(
-                `event-${nextEvent.id}`,
-                '倒计时提醒',
-                `${nextEvent.name} 还剩 ${hours} 小时！`
-            );
-        }
+        // 过滤并排序未来事件
+        const futureEvents = events
+            .filter(event => new Date(event.date) > now)
+            .sort((a, b) => new Date(a.date) - new Date(b.date));
         
-        // 检查是否需要发送一周提醒
-        if (days <= 7 && days > 0) {
-            notificationManager.create(
-                `week-${nextEvent.id}`,
-                '事件倒计时提醒',
-                `${nextEvent.name} 将在 ${days} 天后到来`
-            );
+        // 更新徽章
+        if (futureEvents.length > 0) {
+            const nextEvent = futureEvents[0];
+            const days = dateUtils.calculateDays(nextEvent.date);
+            badgeManager.update(days);
+            
+            // 检查是否需要发送通知（1天内）
+            const timeLeft = new Date(nextEvent.date) - now;
+            if (timeLeft > 0 && timeLeft <= 24 * 60 * 60 * 1000) {
+                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                notificationManager.create(
+                    `event-${nextEvent.id}`,
+                    '倒计时提醒',
+                    `${nextEvent.name} 还剩 ${hours} 小时！`
+                );
+            }
+            
+            // 检查是否需要发送一周提醒
+            if (days <= 7 && days > 0) {
+                notificationManager.create(
+                    `week-${nextEvent.id}`,
+                    '事件倒计时提醒',
+                    `${nextEvent.name} 将在 ${days} 天后到来`
+                );
+            }
+        } else {
+            badgeManager.clear();
         }
-    } else {
-        badgeManager.clear();
+    } catch (error) {
+        console.error('检查事件时出错:', error);
     }
 }
 
-// 设置定时检查
-chrome.alarms.create('checkEvents', {
-    periodInMinutes: 60
-});
+// 初始化扩展
+async function initializeExtension() {
+    // 立即检查一次事件
+    await checkEvents();
+    
+    // 设置定时检查（每小时）
+    chrome.alarms.create('checkEvents', {
+        periodInMinutes: 60
+    });
+    
+    // 设置更频繁的检查（每5分钟）用于保持服务工作进程活跃
+    chrome.alarms.create('keepAlive', {
+        periodInMinutes: 5
+    });
+}
+
+// 监听浏览器启动
+chrome.runtime.onStartup.addListener(initializeExtension);
+
+// 监听扩展安装/更新
+chrome.runtime.onInstalled.addListener(initializeExtension);
 
 // 监听定时器
 chrome.alarms.onAlarm.addListener((alarm) => {
     if (alarm.name === 'checkEvents') {
         checkEvents();
+    } else if (alarm.name === 'keepAlive') {
+        // 保持服务工作进程活跃
+        chrome.storage.local.get(['events'], () => {});
     }
 });
 
@@ -97,5 +121,10 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
     }
 });
 
-// 初始化检查
-checkEvents(); 
+// 监听扩展图标点击
+chrome.action.onClicked.addListener(() => {
+    checkEvents();
+});
+
+// 初始化
+initializeExtension(); 
