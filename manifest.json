@@ -4,7 +4,7 @@
   "short_name": "事件倒计时提醒",
   "version": "1.0",
   "description": "显示最近事件的倒计时天数，帮助您追踪重要事件的时间。支持添加、删除事件，并提供倒计时提醒功能。",
-  "author": "Your Name",
+  "author": "gitLopp",
   "default_locale": "zh_CN",
   "homepage_url": "https://gitlopp.github.io/countdown-reminder/",
   "privacy_policy": "https://gitlopp.github.io/countdown-reminder/privacy.html",

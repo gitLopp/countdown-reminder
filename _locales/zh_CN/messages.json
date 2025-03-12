@@ -7,9 +7,9 @@
     "message": "显示最近事件的倒计时天数，帮助您追踪重要事件的时间。支持添加、删除事件，并提供倒计时提醒功能。",
     "description": "扩展描述"
   },
-  "addNewEvent": {
-    "message": "添加新事件",
-    "description": "添加新事件按钮文本"
+  "addEvent": {
+    "message": "添加事件",
+    "description": "添加事件按钮文本"
   },
   "eventName": {
     "message": "事件名称",
@@ -19,13 +19,19 @@
     "message": "事件日期",
     "description": "事件日期输入框标签"
   },
-  "daysLeft": {
-    "message": "剩余天数",
-    "description": "剩余天数标签"
-  },
   "deleteEvent": {
-    "message": "删除事件",
+    "message": "删除",
     "description": "删除事件按钮文本"
+  },
+  "daysLeft": {
+    "message": "还剩 $DAYS$ 天",
+    "description": "显示剩余天数",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "42"
+      }
+    }
   },
   "notificationTitle": {
     "message": "事件倒计时提醒",
