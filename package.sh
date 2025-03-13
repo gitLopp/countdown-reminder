@@ -11,7 +11,6 @@ cp popup.html temp_package/
 cp popup.js temp_package/
 cp background.js temp_package/
 cp styles.css temp_package/
-cp privacy.html temp_package/
 
 # 创建 store-assets 目录（用于存储商店资源）
 mkdir -p store-assets
