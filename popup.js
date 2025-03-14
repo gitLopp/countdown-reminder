@@ -25,13 +25,16 @@ const dateUtils = {
 // 事件管理
 const eventManager = {
     async getEvents() {
-        const result = await chrome.storage.local.get(['events']);
+        const result = await chrome.storage.sync.get(['events']);
         return result.events || [];
     },
     
     async saveEvents(events) {
-        await chrome.storage.local.set({ events });
+        await chrome.storage.sync.set({ events });
         this.updateUI(events);
+        
+        // 通知后台脚本更新徽章
+        chrome.runtime.sendMessage({ type: 'UPDATE_BADGE', events });
     },
     
     async addEvent(name, date) {

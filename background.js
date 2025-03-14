@@ -126,5 +126,51 @@ chrome.action.onClicked.addListener(() => {
     checkEvents();
 });
 
+// 更新徽章
+async function updateBadge() {
+    try {
+        const result = await chrome.storage.sync.get(['events']);
+        const events = result.events || [];
+        const now = Date.now();
+        
+        const nextEvent = events
+            .filter(event => event.date > now)
+            .sort((a, b) => a.date - b.date)[0];
+            
+        if (nextEvent) {
+            const days = dateUtils.calculateDays(nextEvent.date);
+            chrome.action.setBadgeText({ text: days.toString() });
+            chrome.action.setBadgeBackgroundColor({ color: '#E53935' });
+            chrome.action.setBadgeTextColor({ color: '#FFFFFF' });
+        } else {
+            chrome.action.setBadgeText({ text: '' });
+        }
+    } catch (error) {
+        console.error('Error updating badge:', error);
+    }
+}
+
+// 监听存储变化
+chrome.storage.onChanged.addListener((changes, namespace) => {
+    if (namespace === 'sync' && changes.events) {
+        updateBadge();
+    }
+});
+
+// 监听来自 popup 的消息
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === 'UPDATE_BADGE') {
+        updateBadge();
+    }
+});
+
+// 定期检查并更新徽章
+chrome.alarms.create('updateBadge', { periodInMinutes: 1 });
+chrome.alarms.onAlarm.addListener((alarm) => {
+    if (alarm.name === 'updateBadge') {
+        updateBadge();
+    }
+});
+
 // 初始化
 initializeExtension(); 
